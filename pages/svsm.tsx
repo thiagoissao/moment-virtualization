@@ -1,7 +1,27 @@
 import type { NextPage } from 'next';
+import UserCard from '../src/components/UserCard';
+import Template from '../src/components/Template';
+
+const cardContainerStyle: React.CSSProperties = {
+  margin: '4px 0px',
+};
 
 const Svsm: NextPage = () => {
-  return <div>sem virtualização e sem memoização</div>;
+  return (
+    <Template title="sem virtualização e sem memoização">
+      {({ users, onClickRemove }) => {
+        return (
+          <>
+            {users.map(user => (
+              <div key={`${user.login.uuid}`} style={cardContainerStyle}>
+                <UserCard user={user} onClickRemove={onClickRemove} />
+              </div>
+            ))}
+          </>
+        );
+      }}
+    </Template>
+  );
 };
 
 export default Svsm;
