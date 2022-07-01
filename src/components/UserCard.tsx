@@ -50,4 +50,4 @@ const UserCard = ({ user, onClickRemove }: Props) => {
   );
 };
 
-export default UserCard;
+export default React.memo(UserCard);

@@ -1,10 +1,7 @@
 import type { NextPage } from 'next';
 import UserCard from '../src/components/UserCard';
 import Template from '../src/components/Template';
-
-const cardContainerStyle: React.CSSProperties = {
-  margin: '4px 0px',
-};
+import { cardContainerStyle } from '../styles/cardContainerStyles';
 
 const Svsm: NextPage = () => {
   return (
@@ -14,7 +11,10 @@ const Svsm: NextPage = () => {
           <>
             {users.map(user => (
               <div key={`${user.login.uuid}`} style={cardContainerStyle}>
-                <UserCard user={user} onClickRemove={onClickRemove} />
+                <UserCard
+                  user={user}
+                  onClickRemove={() => onClickRemove(user.login.uuid)}
+                />
               </div>
             ))}
           </>

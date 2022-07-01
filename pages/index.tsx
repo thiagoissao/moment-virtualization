@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
@@ -22,21 +23,29 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/svsm" className={styles.card}>
-            <h2>Sem virtualização e sem memoização</h2>
-          </a>
+          <div className={styles.card}>
+            <Link href="/svsm">
+              <h2>Sem virtualização e sem memoização</h2>
+            </Link>
+          </div>
 
-          <a href="/svcm" className={styles.card}>
-            <h2>Sem virtualização e com memoização</h2>
-          </a>
+          <div className={styles.card}>
+            <Link href="/svcm">
+              <h2>Sem virtualização e com memoização</h2>
+            </Link>
+          </div>
 
-          <a href="/cvsm" className={styles.card}>
-            <h2>Com virtualização e sem memoização</h2>
-          </a>
+          <div className={styles.card}>
+            <Link href="/cvsm">
+              <h2>Com virtualização e sem memoização</h2>
+            </Link>
+          </div>
 
-          <a href="/cvcm" className={styles.card}>
-            <h2>Com virtualização e com memoização</h2>
-          </a>
+          <div className={styles.card}>
+            <Link href="/cvcm">
+              <h2>Com virtualização e com memoização</h2>
+            </Link>
+          </div>
         </div>
       </main>
 

@@ -1,27 +1,34 @@
-import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import { repository } from '../src/repository';
-import { User } from '../src/user.types';
+import Template from '../src/components/Template';
+import { Virtuoso } from 'react-virtuoso';
+import { cardContainerStyle } from '../styles/cardContainerStyles';
+import UserCard from '../src/components/UserCard';
 
-const Svsm: NextPage = () => {
-  const [users, setUsers] = useState<User[]>([]);
-
-  const getUsers = async () => {
-    const items = await repository.getUsers();
-    setUsers(items);
-  };
-
-  useEffect(() => {
-    getUsers();
-  }, []);
-
+const Cvcm: NextPage = () => {
   return (
-    <div>
-      {users.map(user => (
-        <p key={user.id.value}>{user.name.first}</p>
-      ))}
-    </div>
+    <Template title="com virtualização e com memoização">
+      {({ users, onClickRemove }) => {
+        return (
+          <Virtuoso
+            style={{
+              height: '100%',
+              width: 500,
+            }}
+            useWindowScroll
+            totalCount={users.length}
+            data={users}
+            itemContent={(_, user) => {
+              return (
+                <div key={`${user.login.uuid}`} style={cardContainerStyle}>
+                  <UserCard user={user} onClickRemove={onClickRemove} />
+                </div>
+              );
+            }}
+          />
+        );
+      }}
+    </Template>
   );
 };
 
-export default Svsm;
+export default Cvcm;
